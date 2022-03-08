@@ -1,0 +1,6 @@
+- targets:
+  - 127.0.0.1:9404
+  labels:
+    application: nifi
+    os: linux
+    instance: nifi-prod-1

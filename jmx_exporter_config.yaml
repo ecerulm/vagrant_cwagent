@@ -1,0 +1,23 @@
+---
+lowercaseOutputLabelNames: true
+lowercaseOutputName: true
+whitelistObjectNames: 
+  - java.lang:type=ClassLoading
+  - java.lang:type=GarbageCollector,name=*
+  - java.lang:type=Memory
+  - java.lang:type=OperatingSystem
+  - java.lang:type=Threading
+
+rules:
+  - pattern: 'java.lang<type=ClassLoading><>LoadedClassCount:'
+    type: GAUGE
+  - pattern: java.lang<name=([^,]+), type=GarbageCollector><>(CollectionTime)
+    name: java_lang_garbagecollector_$2_$1
+    type: COUNTER
+  - pattern: 'java.lang<type=Memory><(HeapMemoryUsage)>(used|committed):'
+    name: java_lang_memory_$1_$2
+    type: GAUGE
+  - pattern: 'java.lang<type=OperatingSystem><>(CommittedVirtualMemorySize|FreePhysicalMemorySize|FreeSwapSpaceSize|.*FileDescriptorCount)'
+    type: GAUGE
+  - pattern: 'java.lang<type=Threading><>(ThreadCount|DaemonThreadCount)'
+    type: GAUGE

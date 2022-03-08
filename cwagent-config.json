@@ -1,0 +1,57 @@
+
+
+{
+  "agent": {
+    "region": "eu-west-1",
+    "debug": true,
+    "metrics_collection_interval": 60,
+    "omit_hostname": true
+  },
+  "logs": {
+    "metrics_collected": {
+      "prometheus": {
+        "cluster_name": "rubelagu-cluster-test",
+        "log_group_name": "prometheus-rubelagu-test",
+        "prometheus_config_path": "/vagrant/prometheus.yaml",
+        "emf_processor": {
+          "metric_declaration_dedup": true,
+          "metric_namespace": "CWAgent-Prometheus",
+          "metric_unit":{
+            "java_lang_classloading_loadedclasscount": "Count",
+            "java_lang_garbagecollector_collectiontime_concurrentmarksweep": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_copy": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_g1_mixed_generation": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_g1_old_generation": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_g1_young_generation": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_marksweepcompact": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_parnew": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_ps_marksweep": "Milliseconds",
+            "java_lang_garbagecollector_collectiontime_ps_scavenge": "Milliseconds",            
+            "java_lang_memory_heapmemoryusage_committed": "Bytes",
+            "java_lang_memory_heapmemoryusage_used": "Bytes",
+            "java_lang_operatingsystem_committedvirtualmemorysize": "Bytes",
+            "java_lang_operatingsystem_freephysicalmemorysize": "Bytes",
+            "java_lang_operatingsystem_freeswapspacesize": "Bytes",
+            "java_lang_operatingsystem_maxfiledescriptorcount": "Count",
+            "java_lang_operatingsystem_openfiledescriptorcount": "Count",
+            "java_lang_threading_daemonthreadcount": "Count",
+            "java_lang_threading_threadcount": "Count"
+          },
+          "metric_declaration": [
+            {
+                "source_labels": ["job"],
+                "label_matcher": "^nifi-rubelagu-test$",
+                "dimensions":[
+                  ["instance"]
+                ],
+                "metric_selectors": [
+                  "^java_lang_.*"
+                ]
+            }
+          ]
+        }
+      }
+    },
+    "force_flush_interval": 5
+  }
+}
