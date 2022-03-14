@@ -35,9 +35,21 @@
             "java_lang_operatingsystem_maxfiledescriptorcount": "Count",
             "java_lang_operatingsystem_openfiledescriptorcount": "Count",
             "java_lang_threading_daemonthreadcount": "Count",
-            "java_lang_threading_threadcount": "Count"
+            "java_lang_threading_threadcount": "Count",
+	    "jvm_threads_state": "Count"
           },
           "metric_declaration": [
+            {
+                "source_labels": ["job"],
+                "label_matcher": "^nifi-rubelagu-test$",
+                "dimensions":[
+                  ["instance","state"]
+                ],
+                "metric_selectors": [
+                  "^jvm_threads_state$"
+                ]
+            }
+	    ,
             {
                 "source_labels": ["job"],
                 "label_matcher": "^nifi-rubelagu-test$",
@@ -45,7 +57,7 @@
                   ["instance"]
                 ],
                 "metric_selectors": [
-                  "^java_lang_.*"
+                  "^java_lang_.*$"
                 ]
             }
           ]

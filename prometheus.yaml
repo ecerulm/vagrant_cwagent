@@ -7,7 +7,8 @@ scrape_configs:
     file_sd_configs:
       - files: [ "/vagrant/prometheus_file_sd.yaml" ]
     metric_relabel_configs:
-    - source_labels: [__name__]
-      regex: 'java_lang_.*'
-      action: keep 
+      - source_labels: [__name__]
+        regex: '(java_lang_.*|jvm_threads_state)'
+        action: keep
+
   

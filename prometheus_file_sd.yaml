@@ -3,4 +3,4 @@
   labels:
     application: nifi
     os: linux
-    instance: nifi-prod-1
+    instance: nifi-rubelagu-test-1
